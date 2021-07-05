@@ -4,12 +4,12 @@ import { parseTable } from './parseTable';
 
 /**
  * Parses the whole excel file
- * @param {array} data Matrix to parse
+ * @param {blob} blob Excel file to to parse
  * @returns {object} Object with meta object and variables array
  */
-export function parse(path) {
-  let data = getMatrixFromXLSX(path);
-  let header = parseHeader(data);
-  let table = parseTable(data, header.i);
+export function parse(blob) {
+  let matrix = getMatrixFromXLSX(blob);
+  let header = parseHeader(matrix);
+  let table = parseTable(matrix, header.i);
   return { meta: header.meta, variables: table.variables };
 }

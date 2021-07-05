@@ -11,18 +11,21 @@ export function parseTable(matrix, options = {}) {
   let { i: startingRow = 0 } = options;
   for (
     startingRow;
-    matrix[startingRow][0] !== 'Temperature' && startingRow < matrix.length;
+    startingRow < matrix.length && matrix[startingRow][0] !== 'Temperature';
     startingRow++
   );
+  if (startingRow === matrix.length) {
+    return [];
+  }
+  const subMatrix = matrix.slice(startingRow);
   const variables = [];
-  for (let j = 0; j < matrix[startingRow].length; j++) {
+  for (let j = 0; j < subMatrix[0].length; j++) {
     const values = [];
-    let i = startingRow + 1;
-    for (i; i < matrix.length; i++) {
-      values.push(matrix[i][j]);
+    for (let i = 1; i < subMatrix.length; i++) {
+      values.push(parseFloat(subMatrix[i][j]));
     }
-    let split = labelUnit(matrix[startingRow][j]);
-    let variable = { label: split[0], units: split[1], matrix: values };
+    let split = labelUnit(subMatrix[0][j]);
+    let variable = { label: split.label, units: split.unit, data: values };
     variables.push(variable);
   }
   return variables;

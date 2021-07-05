@@ -6,13 +6,15 @@
 
 export function labelUnit(label) {
   // eslint-disable-next-line prefer-named-capture-group
-  const unit = (label.match(/(([a-z]+)([/])+|([(]))([a-zA-Z ()/]+)/))[0];
-  let newLabel = label;
-  if (unit !=='') {
-    newLabel = newLabel.replace(unit,'');
-    newLabel = newLabel.replace(/ $/,'');
+  const units = label.match(/(([a-z]+)([/])+|([(]))([a-zA-Z ()/]+)/);
+  let unit = '';
+  if (units) {
+    unit = units[0];
   }
-  return { label: newLabel,
-           unit: unit,
-          };
+  let newLabel = label;
+  if (unit !== '') {
+    newLabel = newLabel.replace(unit, '');
+  }
+  newLabel = newLabel.replace(/ $/, '');
+  return { label: newLabel, unit: unit };
 }

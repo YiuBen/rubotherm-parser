@@ -16,7 +16,7 @@ export function parseHeader(matrix) {
           meta.Date = current;
         } else if (j + 1 < matrix[i].length) {
           if (matrix[i][j + 1] && !isNaN(matrix[i][j + 1])) {
-            meta[current] = parseFloat(matrix[i][j + 1],10);
+            meta[current] = parseFloat(matrix[i][j + 1], 10);
             continue;
           } else if (
             j + 2 < matrix[i].length &&
@@ -25,9 +25,12 @@ export function parseHeader(matrix) {
             !isNaN(matrix[i][j + 2])
           ) {
             if (matrix[i][j + 1]) {
-              meta[`${current} ${matrix[i][j + 1]}`] = parseFloat(matrix[i][j + 2],10);
+              meta[`${current} ${matrix[i][j + 1]}`] = parseFloat(
+                matrix[i][j + 2],
+                10,
+              );
             } else {
-              meta[current] = parseFloat(matrix[i][j + 2],10);
+              meta[current] = parseFloat(matrix[i][j + 2], 10);
             }
             j++;
             continue;
@@ -39,8 +42,11 @@ export function parseHeader(matrix) {
             matrix[i + 1][j + 1] &&
             !isNaN(matrix[i + 1][j + 1])
           ) {
-            meta[`${current} corrected`] = parseFloat(matrix[i + 1][j],10);
-            meta[`${current} uncorrected`] = parseFloat(matrix[i + 1][j + 1],10);
+            meta[`${current} corrected`] = parseFloat(matrix[i + 1][j], 10);
+            meta[`${current} uncorrected`] = parseFloat(
+              matrix[i + 1][j + 1],
+              10,
+            );
           } else {
             meta[current] = parseFloat(matrix[i + 1][j], 10);
           }
