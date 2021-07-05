@@ -3,7 +3,7 @@ import { labelUnit } from './labelUnit';
 /**
  * Parses columns from a table
  * @param {array} matrix Cells data extracted from the file
- * @param {number} _startingRow (optional) Starting row of the function
+ * @param {} startingRow Starting row of the function
  * @returns {array} Array with objects corresponding to every column
  */
 

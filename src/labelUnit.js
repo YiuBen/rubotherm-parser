@@ -1,6 +1,6 @@
 /**
  * Separates the label and its unit
- * @param {string} label label to separate
+ * @param {string} label to separate
  * @returns {object} Object containing the unit and label
  */
 
