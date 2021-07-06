@@ -24,7 +24,7 @@ export function parseTable(matrix, options = {}) {
     const values = [];
     for (let i = 1; i < subMatrix.length; i++) {
       const value = parseFloat(subMatrix[i][j]);
-      if (!isNaN(value)){
+      if (!isNaN(value)) {
         values.push(value);
       }
     }
