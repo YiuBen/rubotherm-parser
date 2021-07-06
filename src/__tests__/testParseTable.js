@@ -3,8 +3,6 @@ import { join } from 'path';
 import { getMatrixFromWorkbook } from '../getMatrixFromWorkbook';
 import { parseTable } from '../parseTable';
 
-
-
 let xlsx = require('xlsx');
 
 const workbook = xlsx.readFile(

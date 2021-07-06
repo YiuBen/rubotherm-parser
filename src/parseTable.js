@@ -23,7 +23,10 @@ export function parseTable(matrix, options = {}) {
   for (let j = 0; j < subMatrix[0].length; j++) {
     const values = [];
     for (let i = 1; i < subMatrix.length; i++) {
-      values.push(parseFloat(subMatrix[i][j]));
+      const value = parseFloat(subMatrix[i][j]);
+      if (!isNaN(value)) {
+        values.push(value);
+      }
     }
     let split = labelUnit(subMatrix[0][j]);
     let variable = { label: split.label, units: split.unit, data: values };
