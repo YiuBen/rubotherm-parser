@@ -1,10 +1,11 @@
 import { labelUnit } from './labelUnit';
 
 /**
- * Parses columns from a table
+ * Parses a table
  * @param {array} matrix Cells data extracted from the file
- * @param {} startingRow Starting row of the function
- * @returns {array} Array with objects corresponding to every column
+ * @param {object} [options={}]
+ * @param {number} [options.i] Starting row of the function
+ * @returns {array} Array of objects corresponding to each column
  */
 
 export function parseTable(matrix, options = {}) {

@@ -1,5 +1,6 @@
 import { join } from 'path';
 
+import { getMatrixFromWorkbook } from '../getMatrixFromWorkbook';
 import { parseHeader } from '../parseHeader';
 
 let xlsx = require('xlsx');
@@ -10,13 +11,9 @@ const workbook = xlsx.readFile(
     '../../testFiles/8_Rubotherm gravimetric _(Single gas_high pressure).xls',
   ),
 );
-const csv = xlsx.utils.sheet_to_csv(workbook.Sheets[workbook.SheetNames[0]]);
-const lines = csv.split(/\r?\n/);
-const matrix = [];
-for (let i = 0; i < lines.length; i++) {
-  matrix[i] = lines[i].split(',');
-}
+const matrix = getMatrixFromWorkbook(workbook);
 const parsed = parseHeader(matrix).meta;
+
 test('parseHeader', () => {
   expect(parsed['ZP Tem:']).toStrictEqual(0);
   expect(parsed['zero point']).toStrictEqual(-0.000035);
